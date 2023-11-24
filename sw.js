@@ -16,7 +16,7 @@ var urlsToCache=[
     './img/twitter.png',
     './img/favicon-1024.jpg',
     './img/favicon-512.jpg',
-    './img/favicon-384.png',
+    './img/favicon-384.jpg',
     './img/favicon-256.jpg',
     './img/favicon-192.jpg',
     './img/favicon-128.jpg',
@@ -25,6 +25,7 @@ var urlsToCache=[
     './img/favicon-32.jpg',
     './img/favicon-16.jpg',
 ];
+
 //evento install
 //instalacion del service worker y guarda en cache los recursos
 self.addEventListener('install', e =>{
