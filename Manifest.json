@@ -1,15 +1,15 @@
 {
-    "name": "Aplicación web progresiva",
-    "short_name": "Citlalli Naomi Chávez Aguilar", 
+     "name": "Apliación web progresiva",
+    "short_name": "Citlalli Naomi Chávez Aguilar",
     "description": "Practica de la asignatura de aplicaciones web",
-    "background_color": "#FFF", 
-    "theme_color": "#FB314E", 
-    "orientation": "portrait", 
-    "display": "standalone", 
+    "background_color": "#FFF",
+    "theme_color": "#FB314E",
+    "orientation": "portatil",
+    "display": "standalone",
     "start_url": "./index.html?utm_source=web_app_manifest",
-    "scope" : "./", 
-    "lang": "es-ES", 
-    "icons" : [
+    "scope": "./",
+    "lang": "es-ES",
+    "icons":[
         {
             "src" : "./img/favicon-1024.jpg", 
             "sizes": "1024x1024", 
