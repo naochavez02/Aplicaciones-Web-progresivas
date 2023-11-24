@@ -25,51 +25,50 @@ var urlsToCache=[
     './img/favicon-32.jpg',
     './img/favicon-16.jpg',
 ];
-
-//Evento install
-//Instalación del service worker y guarda en cache los recursos
-self.addEventListener('install',e=>{
-    e.waitUntill(
+//evento install
+//instalacion del service worker y guarda en cache los recursos
+self.addEventListener('install', e =>{
+    e.waitUntil(
         caches.open(CACHE_NAME)
-        .then(cache=>{
+        .then(cache => {
             return cache.addAll(urlsToCache)
-            .then(()=>{
+            .then(() => {
                 self.skipWaiting();
             });
         })
-        .catch(err=>console.log('No se ha registrado el cache', err))
+        .catch(err => console.log('No se ha registyrado el cache', err))
     );
 });
 
-//Evento activate
-//que la app funcione sin conexion
-self.addEventListener('activate',e=>{
-    const cacheWhiteList=[CACHE_NAME];
-
-        e.waitUntill(
-            caches.keys()
-            .then(cacheNames=>{
+//evento activate
+//Que la app funcione sin conexion
+self.addEventListener('activate', e =>{
+    const cacheWhitelist = [CACHE_NAME];
+    
+    e.waitUntil(
+        caches.keys()
+            .then(cacheNames => {
                 return Promise.all(
-                cacheNames.map(cacheName=>{
-                    if(cacheWhiteList.indexOf(cacheName)==-1){
-                        //Borrar elementos que se necesitan
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        })
-        .then(()=>{
-            //activar cache
-            self.clients.claim();
-        })
+                    cacheNames.map(cacheName => {
+                        if(cacheWhitelist.indexOf(cacheName) === -1){
+                            //Borrar elementos que no se necesitan
+                            return caches.delete(cacheName);
+                        }
+                    })
+                );
+            })
+            .then(() => {
+                //activar cache
+                self.clients.claim();
+            })
     );
 });
 
-
-//Evento fetch
-self.addEventListener('fecth',e=>{
+//Ecvento fetch
+self.addEventListener('fetch', e => {
     e.respondWith(
-        caches.match(e.request).then(res=>{
+        caches.match(e.request)
+        .then(res =>{
             if(res){
                 return res;
             }
